@@ -23,5 +23,41 @@ const nameAndPrice = products.map(p => ({
   }));
   
   console.log(nameAndPrice);
+
+  const inStockProducts = products.filter(p => p.quantity > 0);
+console.log(inStockProducts);
+ 
+const hasPriceOver30 = products.some(p => p.price > 30);
+console.log(hasPriceOver30);
+
+const allAccessoriesAvailable = products
+  .filter(p => p.category === "Accessories")
+  .every(p => p.isAvailable === true);
+
+console.log(allAccessoriesAvailable);
+
+const totalInventoryValue = products.reduce(
+    (total, p) => total + p.price * p.quantity,
+    0
+  );
   
+  console.log(totalInventoryValue);
+
+  for (const product of products) {
+    console.log(
+      `Tên: ${product.name} - Danh mục: ${product.category} - Trạng thái: ${product.isAvailable}`
+    );
+  }
+
+  for (const key in products[0]) {
+    console.log(key, ":", products[0][key]);
+  }
+
+  const sellingAndInStockNames = products
+  .filter(p => p.isAvailable && p.quantity > 0)
+  .map(p => p.name);
+
+console.log(sellingAndInStockNames);
+
+
   
